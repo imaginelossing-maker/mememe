@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add Student | Student Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#76231b",
+                        "on-primary": "#003915",
+                        "tertiary-fixed-dim": "#ffb4a9",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "primary": "#4be277",
+                        "surface-container-lowest": "#091009",
+                        "primary-container": "#22c55e",
+                        "on-primary-fixed-variant": "#005321",
+                        "outline-variant": "#3d4a3d",
+                        "on-tertiary": "#60130d",
+                        "on-tertiary-fixed-variant": "#7f2a21",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed": "#2c0051",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "on-surface-variant": "#bccbb9",
+                        "surface-container-highest": "#2f372e",
+                        "on-background": "#dce5d9",
+                        "error": "#ffb4ab",
+                        "surface-container-low": "#161d16",
+                        "surface-container-high": "#242c24",
+                        "inverse-surface": "#dce5d9",
+                        "tertiary-container": "#ff8b7c",
+                        "on-secondary": "#490080",
+                        "secondary": "#ddb7ff",
+                        "on-primary-container": "#004b1e",
+                        "outline": "#869585",
+                        "on-tertiary-fixed": "#410001",
+                        "surface-container": "#1a221a",
+                        "on-surface": "#dce5d9",
+                        "tertiary-fixed": "#ffdad5",
+                        "surface": "#0e150e",
+                        "surface-dim": "#0e150e",
+                        "surface-tint": "#4ae176",
+                        "on-secondary-container": "#d6a9ff",
+                        "primary-fixed": "#6bff8f",
+                        "primary-fixed-dim": "#4ae176",
+                        "on-primary-fixed": "#002109",
+                        "secondary-fixed": "#f0dbff",
+                        "background": "#0e150e",
+                        "surface-variant": "#2f372e",
+                        "surface-bright": "#333b33",
+                        "secondary-container": "#6f00be",
+                        "inverse-primary": "#006e2f",
+                        "tertiary": "#ffb5ab",
+                        "inverse-on-surface": "#2a322a",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "touch-target-min": "48px",
+                        "stack-gap": "16px",
+                        "container-padding": "20px",
+                        "element-gap": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-xl-mobile": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "body-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-xl-mobile": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0e150e;
+            font-family: 'Manrope', sans-serif;
+            color: #dce5d9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .input-well {
+            background-color: #161d16;
+            transition: all 0.2s ease-in-out;
+        }
+        .input-well:focus-within {
+            border-color: #4be277;
+            background-color: #1a221a;
+        }
+        .accent-bar {
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 4px 0 0 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface sticky top-0 z-40 flex justify-between items-center w-full px-container-padding h-touch-target-min">
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-variant transition-colors rounded-full p-2 active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Add Student</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+</header>
+<main class="max-w-md mx-auto px-container-padding pt-stack-gap">
+<form class="flex flex-col gap-stack-gap" id="addStudentForm">
+<!-- Profile Photo Upload Area -->
+<section class="flex flex-col items-center py-6">
+<div class="relative group cursor-pointer">
+<div class="w-32 h-32 rounded-full bg-surface-container-highest border-2 border-dashed border-outline flex flex-center items-center justify-center overflow-hidden transition-all group-hover:border-primary">
+<img class="hidden w-full h-full object-cover" data-alt="A clean, professional close-up portrait placeholder for a student profile against a minimalist dark slate background. The lighting is soft and directional, casting subtle shadows to create depth, matching a modern dark mode UI aesthetic with muted green and purple undertones." id="profilePreview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKGAseGiX-Ar3b5OGvvIvEiGpWTvsOTvzCeUojj5FAZstqzzSs97wO9IEVvHXm4MaOk1FbdFHHr0c9w34iGdepRBSadl19k6sRnG_il-QUoRLE9rYi95VrjxO4RwwK6xkAqTvmbgraVeLw82Jzdc_BNwSBzMyqNMvEpj7wiYDXUKU3Rquw6_pUSVkeQZsdop9UiHNG_TQHC31JC7mZvlyERktHlmMwamBZ23HTE9uwk5PPQweQ_OHCslrwNtgezAsJnJ0qHH9Jmw"/>
+<div class="flex flex-col items-center gap-2" id="uploadPlaceholder">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant">add_a_photo</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Upload Photo</span>
+</div>
+</div>
+<div class="absolute bottom-0 right-0 bg-primary p-2 rounded-full shadow-lg text-on-primary">
+<span class="material-symbols-outlined text-base">edit</span>
+</div>
+</div>
+</section>
+<!-- Input Fields Group -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant relative overflow-hidden flex flex-col gap-6">
+<div class="accent-bar bg-primary"></div>
+<!-- Full Name -->
+<div class="flex flex-col gap-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant px-1">Full Name</label>
+<div class="input-well flex items-center gap-3 px-4 py-3 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant">badge</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md font-body-md text-on-surface placeholder:text-outline" placeholder="e.g. Alex Johnson" type="text"/>
+</div>
+</div>
+<!-- Age & Student ID Row -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant px-1">Age</label>
+<div class="input-well flex items-center gap-3 px-4 py-3 rounded-lg border border-outline-variant">
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md font-body-md text-on-surface placeholder:text-outline" placeholder="18" type="number"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant px-1">Student ID</label>
+<div class="input-well flex items-center gap-3 px-4 py-3 rounded-lg border border-outline-variant">
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md font-body-md text-on-surface placeholder:text-outline" placeholder="S-2024-01" type="text"/>
+</div>
+</div>
+</div>
+<!-- Gender Segmented Control -->
+<div class="flex flex-col gap-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant px-1">Gender</label>
+<div class="flex bg-surface-container-highest p-1 rounded-lg">
+<button class="flex-1 py-2 text-label-sm font-label-sm rounded-md bg-primary-container text-on-primary-container transition-all" type="button">Male</button>
+<button class="flex-1 py-2 text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-all" type="button">Female</button>
+<button class="flex-1 py-2 text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-all" type="button">Other</button>
+</div>
+</div>
+<!-- Class Dropdown -->
+<div class="flex flex-col gap-2">
+<label class="text-label-sm font-label-sm text-on-surface-variant px-1">Class / Department</label>
+<div class="input-well flex items-center gap-3 px-4 py-3 rounded-lg border border-outline-variant relative">
+<span class="material-symbols-outlined text-on-surface-variant">school</span>
+<select class="bg-transparent border-none focus:ring-0 w-full text-body-md font-body-md text-on-surface appearance-none pr-8">
+<option value="">Select a class</option>
+<option value="cs">SS1</option>
+<option value="phys">SS2</option>
+<option value="art">SS3</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<div id="armContainer" class="flex flex-col gap-2 hidden mt-2">
+  <label class="text-label-sm font-label-sm text-on-surface-variant px-1">
+    Arm
+  </label>
+
+  <div class="input-well flex items-center gap-3 px-4 py-3 rounded-lg border border-outline-variant relative">
+    <span class="material-symbols-outlined text-on-surface-variant">category</span>
+
+    <select id="armSelect" class="bg-transparent border-none focus:ring-0 w-full text-body-md font-body-md text-on-surface appearance-none pr-8">
+      <option value="">Select arm</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+
+    <span class="material-symbols-outlined absolute right-4 pointer-events-none text-on-surface-variant">
+      expand_more
+    </span>
+  </div>
+</div>
+</div>
+<!-- Priority Notice Chip -->
+<div class="flex items-center gap-2 bg-secondary-container/20 px-4 py-2 rounded-full self-start">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">info</span>
+<span class="text-label-sm font-label-sm text-secondary">A unique ID will be auto-verified upon saving</span>
+</div>
+</form>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full p-container-padding bg-surface/80 backdrop-blur-md z-50">
+<div class="max-w-md mx-auto">
+<button class="w-full h-[52px] bg-primary text-on-primary font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 active:scale-95 transition-all duration-200" id="saveButton">
+<span class="material-symbols-outlined">save</span>
+                Save Student Record
+            </button>
+</div>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        // Segmented Control Logic
+        const genderButtons = document.querySelectorAll('.bg-surface-container-highest button');
+        genderButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                genderButtons.forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-on-primary-container');
+                    b.classList.add('text-on-surface-variant');
+                });
+                btn.classList.add('bg-primary-container', 'text-on-primary-container');
+                btn.classList.remove('text-on-surface-variant');
+            });
+        });
+document.addEventListener('DOMContentLoaded', () => {
+  const classSelect = document.querySelector('select');
+  const armContainer = document.getElementById('armContainer');
+
+  classSelect.addEventListener('change', () => {
+    if (classSelect.value !== "") {
+      armContainer.classList.remove('hidden');
+    } else {
+      armContainer.classList.add('hidden');
+    }
+  });
+});
+        // Simple button active state visual
+        const saveBtn = document.getElementById('saveButton');
+        saveBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Saving...';
+    setTimeout(() => {
+    saveBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Saved Successfully';
+
+    setTimeout(() => {
+        window.location.href = 'index2.html';
+    }, 1500);
+
+}, 1500);
+        });
+
+        // Photo Upload Mock
+        const uploadArea = document.querySelector('.group.cursor-pointer');
+        uploadArea.addEventListener('click', () => {
+            const preview = document.getElementById('profilePreview');
+            const placeholder = document.getElementById('uploadPlaceholder');
+            preview.classList.toggle('hidden');
+            placeholder.classList.toggle('hidden');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Manager - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#93000a",
+                    "on-tertiary-container": "#76231b",
+                    "on-primary": "#003915",
+                    "tertiary-fixed-dim": "#ffb4a9",
+                    "on-secondary-fixed-variant": "#6900b3",
+                    "primary": "#4be277",
+                    "surface-container-lowest": "#091009",
+                    "primary-container": "#22c55e",
+                    "on-primary-fixed-variant": "#005321",
+                    "outline-variant": "#3d4a3d",
+                    "on-tertiary": "#60130d",
+                    "on-tertiary-fixed-variant": "#7f2a21",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed": "#2c0051",
+                    "secondary-fixed-dim": "#ddb7ff",
+                    "on-surface-variant": "#bccbb9",
+                    "surface-container-highest": "#2f372e",
+                    "on-background": "#dce5d9",
+                    "error": "#ffb4ab",
+                    "surface-container-low": "#161d16",
+                    "surface-container-high": "#242c24",
+                    "inverse-surface": "#dce5d9",
+                    "tertiary-container": "#ff8b7c",
+                    "on-secondary": "#490080",
+                    "secondary": "#ddb7ff",
+                    "on-primary-container": "#004b1e",
+                    "outline": "#869585",
+                    "on-tertiary-fixed": "#410001",
+                    "surface-container": "#1a221a",
+                    "on-surface": "#dce5d9",
+                    "tertiary-fixed": "#ffdad5",
+                    "surface": "#0e150e",
+                    "surface-dim": "#0e150e",
+                    "surface-tint": "#4ae176",
+                    "on-secondary-container": "#d6a9ff",
+                    "primary-fixed": "#6bff8f",
+                    "primary-fixed-dim": "#4ae176",
+                    "on-primary-fixed": "#002109",
+                    "secondary-fixed": "#f0dbff",
+                    "background": "#0e150e",
+                    "surface-variant": "#2f372e",
+                    "surface-bright": "#333b33",
+                    "secondary-container": "#6f00be",
+                    "inverse-primary": "#006e2f",
+                    "tertiary": "#ffb5ab",
+                    "inverse-on-surface": "#2a322a",
+                    "on-error": "#690005"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "touch-target-min": "48px",
+                    "stack-gap": "16px",
+                    "container-padding": "20px",
+                    "element-gap": "12px"
+            },
+            "fontFamily": {
+                    "headline-xl-mobile": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "body-lg": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-xl-mobile": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["13px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0e150e;
+            background-image: radial-gradient(circle at 0% 0%, #161d16 0%, transparent 50%),
+                              radial-gradient(circle at 100% 100%, #1a221a 0%, transparent 50%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .login-card {
+            background: #161d16;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            border: 1px solid #3d4a3d;
+        }
+
+        .input-well {
+            background: #091009;
+            border: 1.5px solid #3d4a3d;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .input-well:focus-within {
+            border-color: #4be277;
+            box-shadow: 0 0 0 4px rgba(75, 226, 119, 0.1);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Atmospheric decoration */
+        .ambient-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(75, 226, 119, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="p-container-padding">
+<!-- Ambient background effects -->
+<div class="ambient-glow top-0 right-0 -translate-y-1/2 translate-x-1/2"></div>
+<div class="ambient-glow bottom-0 left-0 translate-y-1/2 -translate-x-1/2"></div>
+<main class="w-full max-w-[400px] flex flex-col items-center">
+<!-- Logo Section -->
+<div class="mb-stack-gap flex flex-col items-center">
+<div class="w-20 h-20 mb-4 overflow-hidden rounded-xl">
+<img alt="Student Manager Logo" class="w-full h-full object-contain" src="data:image/png;base64,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"/>
+</div>
+<h1 class="font-headline-xl-mobile text-headline-xl-mobile text-on-surface text-center">
+                Student Manager
+            </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 text-center opacity-80">
+                Focused achievement starts here.
+            </p>
+</div>
+<!-- Login Form Card -->
+<div class="login-card w-full rounded-xl p-6 flex flex-col gap-stack-gap">
+<form class="flex flex-col gap-stack-gap" id="loginForm" onsubmit="event.preventDefault();">
+<!-- Email/Username Field -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1" for="username">
+                        Username or Email
+                    </label>
+<div class="input-well flex items-center h-touch-target-min rounded-lg px-4 gap-element-gap">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">person</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface font-body-md text-body-md w-full placeholder:text-outline p-0" id="username" placeholder="e.g. alex.smith@university.edu" required="" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1" for="password">
+                        Password
+                    </label>
+<div class="input-well flex items-center h-touch-target-min rounded-lg px-4 gap-element-gap">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">lock</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface font-body-md text-body-md w-full placeholder:text-outline p-0" id="password" placeholder="••••••••" required="" type="password"/>
+<button class="text-on-surface-variant hover:text-primary transition-colors" onclick="togglePassword()" type="button">
+<span class="material-symbols-outlined text-[20px]" id="passIcon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end">
+<a class="font-label-sm text-label-sm text-secondary hover:text-primary-fixed transition-colors active:scale-95 duration-150" href="#">
+                        Forgot Password?
+                    </a>
+</div>
+<!-- Action Button -->
+<button class="bg-primary-container hover:bg-primary text-on-primary-container font-headline-md text-headline-md h-[52px] rounded-lg transition-all active:scale-[0.98] shadow-sm flex items-center justify-center gap-element-gap mt-2" type="submit">
+                    Login
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+  <script src="script.js"></script>
+</form>
+</div>
+<!-- Footer / Sign Up Prompt -->
+<div class="mt-stack-gap text-center">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                New to the platform? 
+              <a class="text-primary font-semibold hover:underline" href="signup.html">
+    Create Account
+</a>
+</p>
+</div>
+</main>
+<script>
+        // Micro-interaction for password visibility
+        function togglePassword() {
+            const passInput = document.getElementById('password');
+            const passIcon = document.getElementById('passIcon');
+            
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                passIcon.textContent = 'visibility_off';
+            } else {
+                passInput.type = 'password';
+                passIcon.textContent = 'visibility';
+            }
+        }
+
+        // Add a subtle parallax effect to the background glow on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const glows = document.querySelectorAll('.ambient-glow');
+            const x = (e.clientX / window.innerWidth) - 0.5;
+            const y = (e.clientY / window.innerHeight) - 0.5;
+
+            glows.forEach((glow, index) => {
+                const speed = (index + 1) * 20;
+                glow.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body></html>
